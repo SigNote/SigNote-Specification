@@ -99,9 +99,10 @@ All SigNotes contain the following information when first signed into existence:
 * Spent at Time (TAI64N, 12-bytes)
 * 3-letter Currency Code (ISO 4217, 3-bytes, Ex: JPY, USD)
 * Currency Denomination (UINT16, Non-Zero)
-* Sequential Identifier (13-bytes, asterisk padded)
-* Public key of Authorized Agent of a government's central reserve
-* Signature data from currency code trust root (government central reserve) authorizing Agent's public key
+* Sequential Identifier (13-bytes, all uppercase, a-z 0-9, asterisk `0x2A` padded)
+* Decimal place / subunit indicator position (UINT8, number of places from start of number, Ex: USD is 2, JPY is 0)
+* Public key of Authorized Agent of a government's central reserve (Ed25519 key, 32-bytes)
+* Signature data from currency code trust root (government central reserve) authorizing Agent's public key (Ed25519 signature, 64-bytes)
 * Nonce (UINT32)
 * SigNote Hash Key String (64-Bytes) (Ex: *"In God We Trust. Copyright The United States Federal Reserve"*)
 * The SigNote's Serial Number (BLAKE2b 64-byte Hash of Initial Data)
