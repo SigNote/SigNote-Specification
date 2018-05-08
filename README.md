@@ -185,6 +185,13 @@ A signed checkpoint is designated inside of the file as a section with the regis
 
 This area is reserved for information about each SigNote Section Type.
 
+* `0x00` -- Initialization
+* `0x01` -- Signature Trust Authorization <br /> *Connects a public key to a currency's trust root.*
+* `0x10` -- Offer <br /> *Offer SigNote to a known public key*
+* `0x11` -- Accept <br /> *Accept SigNote under new public key (must match most recent offer section.*
+* `0xFE` -- Used to VOID a SigNote before its Spent at Time (ST) Limit. <br /> *Next immediate checkpoint must be signed by an agent of a government's central reserve.*
+* `0xFF` -- Signed Checkpoint
+
 ### Working with SigNotes
 
 #### Verifying a SigNote
