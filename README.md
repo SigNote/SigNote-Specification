@@ -68,13 +68,11 @@ Just like paper banknotes, no fees are required to settle debts. Unlike paper ba
                 +-----------v----------+                
       +-[SIGN]-->Financial Institutions<--[SIGN]-+      
       |         +----------------------+         |      
-      |                                          |      
       |   SigNotes can be transferred between    |      
       |  Financial Institutions, Retailers and   |      
       | Consumers endlessly until either (i) the |      
       |file size grows too large or (ii) the bill|      
-      |  reaches its Spent at Time (ST) Limit.   |      
-[SIGN]|                     |                    |[SIGN]
+[SIGN]|  reaches its Spent at Time (ST) Limit.   |[SIGN]
 +-----v-----+               |              +-----v-----+
 | Retailers <----[SIGN]-----+----[SIGN]----> Consumers |
 +-----------+               |              +-----------+
