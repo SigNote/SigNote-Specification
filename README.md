@@ -148,7 +148,14 @@ After the file version header, a SigNote is a constructed of sections with signe
 
 SigNotes are append-only logs of transaction data that MUST be signed after each transaction.
 
-A signed checkpoint is designated inside of the file as a section with the registered type `255` (`0xFF` Hexadecimal) and has the following data structure:
+Unless the following requirements are met, any signed checkpoint data will be discarded:
+
+* All checkpoint public keys must be linked to a valid chain of the SigNote's currency trust root. This is accomplished via file sections with type `0x01` hexadecimal.
+* The timestamp must be more recent than any other timestamp within the SigNote.
+* The timestamp must be within the Spent at Time (ST) Limit of the SigNote.
+* The timestamp must be a time earlier than current time of the verification engine.
+
+A signed checkpoint is designated inside of the file as a section with the registered type `0xFF` hexadecimal and has the following data structure:
 
 ```
 ------------- 4-bytes / 32 bits -------------
