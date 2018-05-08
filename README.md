@@ -93,6 +93,18 @@ Just like paper banknotes, no fees are required to settle debts. Unlike paper ba
 
 SigNotes are represented and stored on computers as binary files.
 
+All SigNotes contain the following information when first signed into existence:
+
+* Creation Time (TAI64N, 12-bytes)
+* Spent at Time (TAI64N, 12-bytes)
+* 3-letter Currency Code (ISO 4217, Ex: JPY, USD)
+* Currency Denomination (UINT16, Non-Zero)
+* Public key of Authorized Agent of a government's central reserve
+* Signature data from currency code trust root (government central reserve) authorizing Agent's public key
+* Nonce (UINT32)
+* SigNote Hash Key String (64-Bytes) (Ex: *"In God We Trust. Copyright The United States Federal Reserve"*)
+* The SigNote's Serial Number (BLAKE2b 64-byte Hash of Initial Data)
+
 Filenames start with the hyphenated concatenation of the ISO 4217 3-letter currency code, followed by the denomination in integer multiples of its least subunit, followed by the serial number and end with the `.snote` file extension. For example, a SigNote representing the denomination of ¥10,000 Japanese Yen would be the following:
 
 `JPY-10000-5891b5b522d5df086d0ff0b110fbd9d21bb4fc7163af34d08286a2e846f6be03.snote`
@@ -144,10 +156,10 @@ A signed checkpoint is designated inside of the file as a section with the regis
 |SECTION TYPE||SECTION FLAGS||SECTION LENGTH|
 |(UINT8=0xFF)||   (UINT8)   ||   (UINT16)   |
 +------------++-------------++--------------+
-------------- 4-bytes / 32 bits -------------
+------------ 16-bytes / 128 bits ------------
 +------------------++-----------------------+
 | TAI64N Timestamp ||     Random Nonce      |
-|    (12 bits)     ||       (20 bits)       |
+|    (12 bytes)    ||       (UINT32)        |
 +------------------++-----------------------+
 ------------ 32-bytes / 256-bits ------------
 +-------------------------------------------+
