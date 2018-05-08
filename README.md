@@ -42,6 +42,89 @@ Just like paper banknotes, no fees are required to settle debts. Unlike paper ba
 
 ![Sending Funds between digital wallets](https://github.com/SigNote/SigNote-Specification/raw/master/images/anime_transfer_currency.gif)
 
+## Technical Specification
+
+### The Lifecycle of a SigNote
+
+```
++------------------------------------------------------+
+| A SigNote is signed into existence at an authorized  |
+|mint using the mint's public/private keypair which is |
+|     co-signed by a government's central reserve.     |
++---------------------------+--------------------------+
+                            |                           
++---------------------------v--------------------------+
+| SigNote sent to a government's central reserve bank. |
++---------------------------+--------------------------+
+                            |                           
++---------------------------v--------------------------+
+| The Central Reserve or one of its co-signing agents  |
+|   signs away the SigNote to a reputable financial    |
+|institution (FI). The SigNote is now in the possession|
+|of the FI. SigNotes require the signature of the last |
+|    and current possessor to start a new transfer.    |
++---------------------------+--------------------------+
+                            |                           
+                +-----------v----------+                
+      +-[SIGN]-->Financial Institutions<--[SIGN]-+      
+      |         +----------------------+         |      
+      |                                          |      
+      |   SigNotes can be transferred between    |      
+      |  Financial Institutions, Retailers and   |      
+      | Consumers endlessly until either (i) the |      
+      |file size grows too large or (ii) the bill|      
+      |  reaches its Spent at Time (ST) Limit.   |      
+[SIGN]|                     |                    |[SIGN]
++-----v-----+               |              +-----v-----+
+| Retailers <----[SIGN]-----+----[SIGN]----> Consumers |
++-----------+               |              +-----------+
+                            |                           
++---------------------------v--------------------------+
+| Once a SigNote cannot be transferred anymore due to  |
+|file size or Spent at Time Limitation, the file can be|
+| sent back to an agent of the central reserve system  |
+|  where a new SigNote of exact denomination will be   |
+|    exchanged for the old SigNote. This provides a    |
+|  government's central reserve or treasury with data  |
+| that can be used to better the economy and check for |
+|            rouge entities in the system.             |
++------------------------------------------------------+
+```
+
+### The SigNote File Format
+
+SigNotes are represented and stored on computers as binary files.
+
+Filenames start with the hyphenated concatenation of the ISO 4217 3-letter currency code, followed by the denomination in integer multiples of its least subunit, followed by the serial number and end with the `.snote` file extension. For example, a SigNote representing the denomination of ¥10,000 Japanese Yen would be the following:
+
+`JPY-10000-5891b5b522d5df086d0ff0b110fbd9d21bb4fc7163af34d08286a2e846f6be03.snote`
+
+Likewise, a SigNote representing the denomination of $100.00 United States Dollars would be the following:
+
+`USD-10000-48ae15fd45c3ae607e41a72d153d6c051f267c42f5ea11f26e1b33b183eaf0e8.snote`
+
+Notice again that SigNotes of USD denomination are represented in integer multiples of its least subunit and not a fraction of the main unit.
+
+### The SigNote File Header
+
+SigNotes start with the following 4-byte header:
+
+```
++----------++----------+
+|MAGIC:"SN"|| VERSION  |
+| (0x534E) || (0x0001) |
++----------++----------+
+```
+
+### Working with SigNotes
+
+#### Verifying a SigNote
+
+#### Transferring a SigNote
+
+#### Requesting a SigNote
+
+
 
 [1]: https://www.nytimes.com/2018/05/04/upshot/should-the-fed-create-fedcoin-to-rival-bitcoin-a-former-top-official-says-maybe.html
 [2]: http://bitcoin.org/bitcoin.pdf
