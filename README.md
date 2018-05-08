@@ -103,24 +103,77 @@ Likewise, a SigNote representing the denomination of $100.00 United States Dolla
 
 Notice again that SigNotes of USD denomination are represented in integer multiples of its least subunit and not a fraction of the main unit.
 
-### The SigNote File Header
+#### SigNote File Version Header
 
-SigNotes start with the following 4-byte header:
+SigNotes start with the following 4-byte version header:
 
 ```
-+----------++----------+
-|MAGIC:"SN"|| VERSION  |
-| (0x534E) || (0x0001) |
-+----------++----------+
+------------- 4-bytes / 32 bits -------------
++--------------------+ +--------------------+
+|     MAGIC:"SN"     | |      VERSION       |
+|      (0x534E)      | |      (0x0001)      |
++--------------------+ +--------------------+
 ```
+
+#### SigNote File Sections
+
+After the file version header, a SigNote is a constructed of sections with signed checkpoints with the following data structure:
+
+```
+------------- 4-bytes / 32 bits -------------
++------------++-------------++--------------+
+|SECTION TYPE||SECTION FLAGS||SECTION LENGTH|
+|  (UINT8)   ||   (UINT8)   ||   (UINT16)   |
++------------++-------------++--------------+
+---- Section Length (MAXIMUM 16383 BYTES) ---
++-------------------------------------------+
+|           SECTION SPECIFIC DATA           |
+|           (MAXIMUM 16383 BYTES)           |
++-------------------------------------------+
+```
+
+#### SigNote Signed Checkpoints
+
+SigNotes are append-only logs of transaction data that MUST be signed after each transaction.
+
+A signed checkpoint is designated inside of the file as a section with the registered type `255` (`0xFF` Hexadecimal) and has the following data structure:
+
+```
+------------- 4-bytes / 32 bits -------------
++------------++-------------++--------------+
+|SECTION TYPE||SECTION FLAGS||SECTION LENGTH|
+|(UINT8=0xFF)||   (UINT8)   ||   (UINT16)   |
++------------++-------------++--------------+
+------------- 4-bytes / 32 bits -------------
++------------------++-----------------------+
+| TAI64N Timestamp ||     Random Nonce      |
+|    (12 bits)     ||       (20 bits)       |
++------------------++-----------------------+
+------------ 32-bytes / 256-bits ------------
++-------------------------------------------+
+|             SIGNER PUBLIC KEY             |
+|             Ed25519(256-bits)             |
++-------------------------------------------+
+------------ 64-bytes / 512-bits ------------
++-------------------------------------------+
+|    Signature of file up to this point     |
+|             Ed25519(512-bits)             |
++-------------------------------------------+
+```
+
+#### SigNote Section Listing
+
+This area is reserved for information about each SigNote Section Type.
 
 ### Working with SigNotes
 
 #### Verifying a SigNote
 
+This area is reserved for information about how to Verify a SigNote.
+
 #### Transferring a SigNote
 
-#### Requesting a SigNote
+This area is reserved for information about how to Transfer a SigNote.
 
 
 
