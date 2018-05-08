@@ -97,8 +97,9 @@ All SigNotes contain the following information when first signed into existence:
 
 * Creation Time (TAI64N, 12-bytes)
 * Spent at Time (TAI64N, 12-bytes)
-* 3-letter Currency Code (ISO 4217, Ex: JPY, USD)
+* 3-letter Currency Code (ISO 4217, 3-bytes, Ex: JPY, USD)
 * Currency Denomination (UINT16, Non-Zero)
+* Sequential Identifier (13-bytes, asterisk padded)
 * Public key of Authorized Agent of a government's central reserve
 * Signature data from currency code trust root (government central reserve) authorizing Agent's public key
 * Nonce (UINT32)
