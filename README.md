@@ -157,6 +157,10 @@ Unless the following requirements are met, any signed checkpoint data will be di
 * The timestamp must be within the Spent at Time (ST) Limit of the SigNote.
 * The timestamp must be a time earlier than current time of the verification engine.
 
+If the checkpoint is the last checkpoint in the SigNote and is signed by an entity other the verification engine:
+
+* The timestamp must be within 172800 seconds difference of the current time of the verification engine.
+
 A signed checkpoint is designated inside of the file as a section with the registered type `0xFF` hexadecimal and has the following data structure:
 
 ```
