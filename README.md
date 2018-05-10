@@ -32,6 +32,21 @@ The Federal Reserve's Randal Quarles Says Bitcoin Could Be Dangerous for the Fin
 
 > “Digital currencies are a niche product that sometimes garners large headlines," he said. “But from the standpoint of analysis, the ‘currency’ or asset at the center of some of these systems is not backed by other secure assets, has no intrinsic value, is not the liability of a regulated banking institution, and in leading cases, is not the liability of any institution at all.”
 
+### Zero Accountability: an Agent of Corruption
+
+Bitcoin and related systems are built on anonymous cryptographic primitives that make it easy to subvert international anti-laundering treaties leading to increased drug trafficking.
+
+According to the U.S. DEA [[8]]:
+> Emerging as a money laundering threat, virtual currencies, such as Bitcoin, enable [Transnational Criminal Organizations] to easily transfer illicit proceeds internationally.
+
+A joint report published by The Foundation for Defense of Democracies' Center on Sanctions and Illicit Finance [[9]] has indicated that Bitcoin laundering for illicit drug activity is a highly centralized process.
+
+Authors Yaya Fanusi and Tom Robinson [[10]]:
+> Mixers have consistently processed about a quarter of incoming illicit Bitcoins per year. The proportion laundered through exchanges and gambling combined has been roughly constant (66 to 72 percent). Of note, Bitcoin exchanges processed 45 percent of laundered Bitcoins, but, as they received much higher volumes, a much lower proportion of their activity is illicit.
+
+These problems are not just limited to Bitcoin: the Federal Bureau of Investigation (FBI) expressed concerns over digital currency *Monero* and its use among criminals. Joseph Battaglia, a special agent working at the FBI's Cyber Division in New York City, had this to say at a joint event with New York's Fordham University [[11]]:
+
+> There are obviously going to be issues if some of the more difficult to work with cryptocurrencies become popular. Monero is one that comes to mind, where its not very obvious what the transaction path is or what the actual value of the transaction is except to the end users. *-- Joseph Battaglia, FBI Special Agent at the NYC Cyber Division*
 
 ## Solutions in SigNote
 ### Signed Banknotes, not Signed Balances
