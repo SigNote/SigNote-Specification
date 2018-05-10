@@ -17,6 +17,7 @@ In his seminal paper, *Bitcoin: A Peer-to-Peer Electronic Cash System* [[2]], Sa
 ## Problems with Bitcoin and related systems
 ### Economic Problems
 Since BitCoin and related systems are built on the principle of a network of computers calculating cryptographic proofs, such systems suffer from the following problems:
+
 * Proofs require massive commitment from our environment [[3]].
 * Transactions are costly and slow [[4]].
 * Transactions cannot travel from "hand-to-hand".
@@ -239,3 +240,7 @@ This area is reserved for information about how to Transfer a SigNote.
 [5]: https://www.theguardian.com/technology/2018/jan/29/cryptocurrencies-bitcoin-blockchain-what-they-really-mean-for-our-future
 [6]: https://www.forbes.com/sites/forbestechcouncil/2018/03/29/the-problems-with-bitcoin-and-the-future-of-blockchain/#497e3c9b68dc
 [7]: https://www.bloomberg.com/news/articles/2017-11-30/guess-who-s-not-joining-bitcoin-revolution-fed-s-bank-watchdog
+[8]: https://www.dea.gov/docs/DIR-040-17_2017-NDTA.pdf
+[9]: http://www.defenddemocracy.org/csif
+[10]: https://info.elliptic.co/whitepaper-fdd-bitcoin-laundering
+[11]: https://www.deepdotweb.com/2017/02/17/fbi-concerned-criminals-use-monero/
