@@ -42,6 +42,10 @@ Just like paper banknotes, no fees are required to settle debts. Unlike paper ba
 
 ![Sending Funds between digital wallets](https://github.com/SigNote/SigNote-Specification/raw/master/images/anime_transfer_currency.gif)
 
+### Support for ISIC Codes
+
+SigNote records a ISIC (International Standard Industrial Classification) code for each transaction that is verified by sender and recipient so that economic activity can recorded for easy accounting and to protect against money laundering and fraudulent transactions. 
+
 ## Technical Specification
 
 ### The Lifecycle of a SigNote
