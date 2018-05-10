@@ -131,7 +131,9 @@ SigNotes start with the following 4-byte version header:
 
 #### SigNote File Sections
 
-After the file version header, a SigNote is a constructed of sections with signed checkpoints with the following data structure:
+After the file version header, a SigNote is a constructed of sections and signed checkpoints.
+
+Each section is represented by the following data structure:
 
 ```
 ------------- 4-bytes / 32 bits -------------
