@@ -52,7 +52,7 @@ These problems are not just limited to Bitcoin: the Federal Bureau of Investigat
 ### Signed Banknotes, not Signed Balances
 SigNote defines a set of rules for encoding, validating and sending banknote denominations from entity to entity, much like sending files directly from computer to computer. Compare this to BitCoin and related systems where each address in the system stores a balance much like a bank and requires a network of computers to calculate a shared balance.
 
-### No fees required
+### Works like a Banknote: No Fees Required
 Just like paper banknotes, no fees are required to settle debts. Unlike paper banknotes, SigNotes are digital data that can be securely stored inside a smartphone or physical cryptographic wallet. Settling debts only requires a means of directly connecting to another secure wallet either physically or over the Internet.
 
 ![Sending Funds between digital wallets](https://github.com/SigNote/SigNote-Specification/raw/master/images/anime_transfer_currency.gif)
