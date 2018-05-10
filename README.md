@@ -57,9 +57,11 @@ Just like paper banknotes, no fees are required to settle debts. Unlike paper ba
 
 ![Sending Funds between digital wallets](https://github.com/SigNote/SigNote-Specification/raw/master/images/anime_transfer_currency.gif)
 
-### Support for ISIC Codes
+### Transaction Accountability Built-in
 
-SigNote records a ISIC (International Standard Industrial Classification) code for each transaction that is verified by sender and recipient so that economic activity can recorded for easy accounting and to protect against money laundering and fraudulent transactions. 
+* **Cryptographically Signed Identities:** All cryptographic identities used in SigNote are required to be co-signed by a government's central reserve and therefore are accountable to a government's central reserve. In the event of a double-spend, illicit transaction or fraudulent activity, any such rouge entity could be identified and subsequently sentenced if required under the current legal framework for wire fraud by most governments.
+* **Privacy Amongst Peers:** Names, phone numbers and addresses are not stored in SigNote as a policy and therefore contribute to the strength of privacy amongst peers.
+* **Support for ISIC Codes:** SigNote records a ISIC (International Standard Industrial Classification) code for each transaction that is verified by both sender and recipient so that economic activity can recorded for easy accounting and to protect against money laundering and fraudulent transactions.
 
 ## Technical Specification
 
