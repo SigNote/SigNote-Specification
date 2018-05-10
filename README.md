@@ -12,11 +12,11 @@ Without permission, anyone may use, reproduce or distribute any material in this
 
 Members of the U.S. Congress and the Federal Reserve are said to be in talks as of May 2018 about the possibility of a Federal Reserve Blockchain nicknamed "FedCoin" [[1]]. With the rise of credit cards and subsequently debit cards, the benefits of electronic money transfer are well known and practiced. That said, the boundary between money transfer and unit of reserve currency is also well apparent: today, we continue use paper money in daily commerce that is prone to counterfeiting and damage. Such paper reserve currency cannot be sent long distances or spent online without the help of third-parties.
 
-In his seminal paper, *Bitcoin: A Peer-to-Peer Electronic Cash System* [[2]], Satoshi Nakamoto outlines a money transfer network that would *"allow payments to be sent directly from one party to another without going through a financial institution."* As of May 2018, the current implementation of the bitcoin network consumes a great deal of energy by means of requiring computers to calculate cryptographic proofs of all transactions at great cost [[3]].
+In his seminal paper, *Bitcoin: A Peer-to-Peer Electronic Cash System* [[2]], Satoshi Nakamoto outlines a money transfer network that would *"allow payments to be sent directly from one party to another without going through a financial institution."* As of May 2018, the current implementation of the Bitcoin network consumes a great deal of energy by means of requiring computers to calculate cryptographic proofs of all transactions at great cost [[3]].
 
 ## Problems with Bitcoin and related systems
 ### Economic Problems
-Since BitCoin and related systems are built on the principle of a network of computers calculating cryptographic proofs, such systems suffer from the following problems:
+Since Bitcoin and related systems are built on the principle of a network of computers calculating cryptographic proofs, such systems suffer from the following problems:
 
 * Proofs require massive commitment from our environment [[3]].
 * Transactions are costly and slow [[4]].
@@ -26,7 +26,7 @@ Since BitCoin and related systems are built on the principle of a network of com
 Bitcoin in particular has a limited number of "coins" that amounts to 21 million in total when all the coins are found. Before such an event, it is said that "mining [coins] will not be profitable due to the high energy cost and expensive hardware needed for mining." [[6]]
 
 ### Social Integrity Problems
-Our current society and financial system is built on the reserve currency banking model, a model of trust. BitCoin and related systems seemingly aim to replace government backed reserve currency with their own model of a trustless system with no controls or legal oversight. From Nakamoto's paper: "We have proposed a system for electronic transactions without relying on trust." [[2]]
+Our current society and financial system is built on the reserve currency banking model, a model of trust. Bitcoin and related systems seemingly aim to replace government backed reserve currency with their own model of a trustless system with no controls or legal oversight. From Nakamoto's paper: "We have proposed a system for electronic transactions without relying on trust." [[2]]
 
 The Federal Reserve's Randal Quarles Says Bitcoin Could Be Dangerous for the Financial System [[7]]
 > “Without the backing of a central bank asset and institutional support, it is not clear how a private digital currency at the center of a large-scale payment system would behave, or whether the payment system would be able to function, in times of stress,” Quarles, the Fed’s newly minted vice chairman for supervision, said in remarks prepared for a Thursday conference at the U.S. Treasury Department.
@@ -51,7 +51,7 @@ These problems are not just limited to Bitcoin: the Federal Bureau of Investigat
 
 ## Solutions in SigNote
 ### Signed Banknotes, not Signed Balances
-SigNote defines a set of rules for encoding, validating and sending banknote denominations from entity to entity, much like sending files directly from computer to computer. Compare this to BitCoin and related systems where each address in the system stores a balance much like a bank and requires a network of computers to calculate a shared balance.
+SigNote defines a set of rules for encoding, validating and sending banknote denominations from entity to entity, much like sending files directly from computer to computer. Compare this to Bitcoin and related systems where each address in the system stores a balance much like a bank and requires a network of computers to calculate a shared balance.
 
 ### Works like a Banknote: No Fees Required
 Just like paper banknotes, no fees are required to settle debts. Unlike paper banknotes, SigNotes are digital data that can be securely stored inside a smartphone or physical cryptographic wallet. Settling debts only requires a means of directly connecting to another secure wallet either physically or over the Internet.
