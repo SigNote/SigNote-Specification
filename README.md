@@ -30,6 +30,7 @@ Without permission, anyone may use, reproduce or distribute any material in this
          * [Working with SigNotes](#working-with-signotes)
             * [Verifying a SigNote](#verifying-a-signote)
             * [Transferring a SigNote](#transferring-a-signote)
+         * [Implementations &amp; Status](#implementations--status)
 
 ## Background
 
@@ -254,7 +255,19 @@ This area is reserved for information about how to Verify a SigNote.
 
 This area is reserved for information about how to Transfer a SigNote.
 
+### Implementations & Status
 
+- [X] Header
+- [X] Initialization Section
+- [ ] Signed Checkpoints
+    - [ ] Signature Trust Authorization
+    - [ ] Signed Checkpoint Verification
+- [ ] Transferring SigNotes
+    - [ ] Offer
+    - [ ] Accept
+
+* [SigNote-Python](https://github.com/SigNote/SigNote-python) <br />
+    The first implementation will be written in Python for ease of understanding the file format.
 
 [1]: https://www.nytimes.com/2018/05/04/upshot/should-the-fed-create-fedcoin-to-rival-bitcoin-a-former-top-official-says-maybe.html
 [2]: http://bitcoin.org/bitcoin.pdf
