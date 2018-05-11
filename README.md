@@ -8,6 +8,29 @@ Without permission, anyone may use, reproduce or distribute any material in this
 
 **DISCLAIMER**: This SigNote Specification is for information purposes only. kristopher tate does not guarantee the accuracy of or the conclusions reached in this document and as such, it is provided “as is”. kristopher tate does not make and expressly disclaim all representations and warranties, express, implied, statutory or otherwise, whatsoever, including, but not limited to: (i) warranties of merchantability, fitness for a particular purpose, suitability, usage, title or noninfringement; (ii) that the contents of this document are free from error; and (iii) that such contents will not infringe third-party rights. kristopher tate shall have no liability for damages of any kind arising out of the use, reference to, or reliance on this document or any of the content contained herein, even if advised of the possibility of such damages. In no event will kristopher tate be liable to any person or entity for any damages, losses, liabilities, costs or expenses of any kind, whether direct or indirect, consequential, compensatory, incidental, actual, exemplary, punitive or special for the use of, reference to, or reliance on this document or any of the content contained herein, including, without limitation, any loss of business, revenues, profits, data, use, goodwill or other intangible losses.
 
+## Table of Contents
+
+   * [The SigNote Specification (draft-00)](#the-signote-specification-draft-00)
+      * [Background](#background)
+      * [Problems with Bitcoin and related systems](#problems-with-bitcoin-and-related-systems)
+         * [Economic Problems](#economic-problems)
+         * [Social Integrity Problems](#social-integrity-problems)
+         * [Zero Accountability: an Agent of Corruption](#zero-accountability-an-agent-of-corruption)
+      * [Solutions in SigNote](#solutions-in-signote)
+         * [Signed Banknotes, not Signed Balances](#signed-banknotes-not-signed-balances)
+         * [Works like a Banknote: No Fees Required](#works-like-a-banknote-no-fees-required)
+         * [Transaction Accountability Built-in](#transaction-accountability-built-in)
+      * [Technical Specification](#technical-specification)
+         * [The Lifecycle of a SigNote](#the-lifecycle-of-a-signote)
+         * [The SigNote File Format](#the-signote-file-format)
+            * [SigNote File Version Header](#signote-file-version-header)
+            * [SigNote File Sections](#signote-file-sections)
+            * [SigNote Signed Checkpoints](#signote-signed-checkpoints)
+            * [SigNote Section Listing](#signote-section-listing)
+         * [Working with SigNotes](#working-with-signotes)
+            * [Verifying a SigNote](#verifying-a-signote)
+            * [Transferring a SigNote](#transferring-a-signote)
+
 ## Background
 
 Members of the U.S. Congress and the Federal Reserve are said to be in talks as of May 2018 about the possibility of a Federal Reserve Blockchain nicknamed "FedCoin" [[1]]. With the rise of credit cards and subsequently debit cards, the benefits of electronic money transfer are well known and practiced. That said, the boundary between money transfer and unit of reserve currency is also well apparent: today, we continue use paper money in daily commerce that is prone to counterfeiting and damage. Such paper reserve currency cannot be sent long distances or spent online without the help of third-parties.
