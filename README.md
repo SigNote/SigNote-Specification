@@ -321,12 +321,41 @@ Each *Signature Trust Authorization Section* is represented by the following dat
 
 This area is reserved for information about each SigNote Section Type.
 
-* `0x00` -- Initialization
-* `0x10` -- Signature Trust Authorization <br /> *Connects a public key to a currency's trust root.*
-* `0x20` -- Offer <br /> *Offer SigNote to a known public key*
-* `0x21` -- Accept <br /> *Accept SigNote under new public key (must match most recent offer section.*
-* `0xFE` -- Used to VOID a SigNote before its Spent at Time (ST) Limit. <br /> *Next immediate checkpoint must be signed by an agent of a government's central reserve.*
-* `0xFF` -- Signed Checkpoint
+* `0x0` **Document Root Control Sections**
+    * `0x00` **Initialization**
+* `0x1` **Trust Control Sections**
+    * `0x10` **Signature Trust Authorization** <br /> *Connects a public key to a currency's trust root.*
+* `0x2` **Transaction Control Section**
+    * `0x20` **Offer** <br /> *Offer SigNote to a known public key*
+    * `0x21` **Accept** <br /> *Accept SigNote under new public key (must match most recent offer section.*
+* `0x3` **Reserved**
+* `0x4` **Reserved**
+* `0x5` **Reserved**
+* `0x6` **Reserved**
+* `0x7` **Reserved**
+* `0x9` **Reserved**
+* `0xA` **Reserved**
+* `0xB` **Reserved**
+* `0xC` **Reserved**
+* `0xD` **Reserved**
+* `0xE` **Reserved**
+* `0xF` **Special Consideration Sections**
+    * `0xF0` *Reserved*
+    * `0xF1` *Reserved*
+    * `0xF2` *Reserved*
+    * `0xF3` *Reserved*
+    * `0xF4` *Reserved*
+    * `0xF5` *Reserved*
+    * `0xF6` *Reserved*
+    * `0xF7` *Reserved*
+    * `0xF8` *Reserved*
+    * `0xF9` *Reserved*
+    * `0xFA` *Reserved*
+    * `0xFB` *Reserved*
+    * `0xFC` *Reserved*
+    * `0xFD` *Reserved*
+    * `0xFE` **VOID Fuse** *Used to void a SigNote before its Spent at Time (ST) Limit.* <br /> *Next immediate checkpoint must be signed by an agent of a government's central reserve.*
+    * `0xFF` **Signed Checkpoint Section**
 
 ### Working with SigNotes
 
