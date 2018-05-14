@@ -266,14 +266,63 @@ The integrity of each signer in the SigChain is backed by the signature of Inter
 
 Each link in this chain is stored in a SigNote in the form of a *Signature Trust Authorization Section*.
 
+Each *Signature Trust Authorization Section* is represented by the following data structure:
+
+
+```
+                                                            |[ENTITY ROLE]                   
+                                               +------------+00______ END USER               
+                                               |            |01______ INTERMEDIATE L1        
+                                               |            |10______ INTERMEDIATE L0        
+                                               |            |11______ ROOT                   
+                                               |                                             
+                                               |            |[ISSUER ROLE]                   
+                                               | +----------+__00____ END USER               
+                                               | |          |__01____ INTERMEDIATE L1        
+                                               | |          |__10____ INTERMEDIATE L0        
+                                               | |          |__11____ ROOT                   
+                                               | |                                           
+------------- 4-bytes / 32 bits -------------  | |          |____1000 Can sign 0x0 Sections  
++------------++-------------++--------------+  | | +--------+____0100 Can sign 0x1 Sections  
+|SECTION TYPE||SECTION FLAGS||SECTION LENGTH|  | | |        |____0010 Can sign 0x2 Sections  
+|(UINT8=0x01)||   (UINT8)   ||   (UINT16)   |  | | |        |____0001 Can sign 0x3 Sections  
++------------++-------------++--------------+  v v v                                         
+------------ 24-bytes / 192 bits ------------ /00000000     |10000000 Can sign 0x4 Sections  
++--------------++--------------++-----------+/ v------------+01000000 Can sign 0x5 Sections  
+|  Not Valid   ||  Not Valid   ||           %  00000000     |00100000 Can sign 0x6 Sections  
+|    Before    ||    After     || ROLE CODE %  v----------+ |00010000 Can sign 0x7 Sections  
+|   (TAI64N)   ||   (TAI64N)   || (UINT32)  %  00000000   | |00001000 Can sign 0x8 Sections  
+|  (12 bytes)  ||  (12 bytes)  ||           %\ v--------+ | |00000100 Can sign 0x9 Sections  
++--------------++--------------++-----------+ \00000000 | | |00000010 Can sign 0xA Sections  
+------------ 32-bytes / 256-bits ------------           | | |00000001 Can sign 0xB Sections  
++-------------------------------------------+           | |                                  
+|             ENTITY PUBLIC KEY             |           | +-+10000000 Can sign 0xC Sections  
+|             Ed25519(256-bits)             |           |   |01000000 Can sign 0xF0 Section  
++-------------------------------------------+           |   |00100000 Can sign 0xF1 Section  
+------------ 32-bytes / 256-bits ------------           |   |00010000 Can sign 0xF2 Section  
++-------------------------------------------+           |   |00001000 Can sign 0xF3 Section  
+|             ISSUER PUBLIC KEY             |           |   |00000100 Can sign 0xF4 Section  
+|             Ed25519(256-bits)             |           |   |00000010 Can sign 0xF5 Section  
++-------------------------------------------+           |   |00000001 Can sign 0xF6 Section  
+------------ 64-bytes / 512-bits ------------           |                                    
++-------------------------------------------+           +---+10000000 Can sign 0xF7 Section  
+|   Trust Authorization Section Signature   |               |01000000 Can sign 0xF8 Section  
+|             Ed25519(512-bits)             |               |00100000 Can sign 0xF9 Section  
++-------------------------------------------+               |00010000 Can sign 0xFA Section  
+                                                            |00001000 Can sign 0xFB Section  
+                                                            |00000100 Can sign 0xFC Section  
+                                                            |00000010 Can sign 0xFD Section  
+                                                            |00000001 Can sign 0xFE Section  
+```
+
 #### SigNote Section Listing
 
 This area is reserved for information about each SigNote Section Type.
 
 * `0x00` -- Initialization
-* `0x01` -- Signature Trust Authorization <br /> *Connects a public key to a currency's trust root.*
-* `0x10` -- Offer <br /> *Offer SigNote to a known public key*
-* `0x11` -- Accept <br /> *Accept SigNote under new public key (must match most recent offer section.*
+* `0x10` -- Signature Trust Authorization <br /> *Connects a public key to a currency's trust root.*
+* `0x20` -- Offer <br /> *Offer SigNote to a known public key*
+* `0x21` -- Accept <br /> *Accept SigNote under new public key (must match most recent offer section.*
 * `0xFE` -- Used to VOID a SigNote before its Spent at Time (ST) Limit. <br /> *Next immediate checkpoint must be signed by an agent of a government's central reserve.*
 * `0xFF` -- Signed Checkpoint
 
