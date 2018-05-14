@@ -289,7 +289,7 @@ Each *Signature Trust Authorization Section (TAS)* is represented by the followi
 |SECTION TYPE||SECTION FLAGS||SECTION LENGTH|  | | |        |____0010 Can sign 0x2 Sections  
 |(UINT8=0x10)||   (UINT8)   ||   (UINT16)   |  | | |        |____0001 Can sign 0x3 Sections  
 +------------++-------------++--------------+  v v v                                         
------------- 24-bytes / 192 bits ------------ /00000000     |10000000 Can sign 0x4 Sections  
+------------ 28-bytes / 224 bits ------------ /00000000     |10000000 Can sign 0x4 Sections  
 +--------------++--------------++-----------+/ v------------+01000000 Can sign 0x5 Sections  
 |  Not Valid   ||  Not Valid   ||           %  00000000     |00100000 Can sign 0x6 Sections  
 |    Before    ||    After     || ROLE CODE %  v----------+ |00010000 Can sign 0x7 Sections  
