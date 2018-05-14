@@ -21,6 +21,7 @@ Without permission, anyone may use, reproduce or distribute any material in this
          * [Works like a Banknote: No Fees Required](#works-like-a-banknote-no-fees-required)
          * [Transaction Accountability Built-in](#transaction-accountability-built-in)
       * [Technical Specification](#technical-specification)
+         * [Definitions](#definitions)
          * [The Lifecycle of a SigNote](#the-lifecycle-of-a-signote)
          * [The SigNote File Format](#the-signote-file-format)
             * [SigNote File Version Header](#signote-file-version-header)
@@ -90,6 +91,13 @@ Just like paper banknotes, no fees are required to settle debts. Unlike paper ba
 * **Support for ISIC Codes:** SigNote records a ISIC (International Standard Industrial Classification) code for each transaction that is verified by both sender and recipient so that economic activity can recorded for easy accounting and to protect against money laundering and fraudulent transactions.
 
 ## Technical Specification
+
+### Definitions
+
+* **SigNote**: Short for *Signed Notes (for Reserve Currencies)*, it is digital computer file that utilizes secure cryptographic signatures to store, verify and transmit reserve currency in denominations established by a government's central reserve.
+* **SigChain**: Short for *Signature Chain*, it refers to the continuously growing list of metadata sections inside of a SigNote, which are linked and secured after each transaction by cryptographic signatures.
+* **Spent at Time**: The time at which a SigNote is VOID and cannot transact further. Spent SigNotes may be sent back to an agent of a government's central reserve to redeem a new SigNote for further transaction. *Spent at Time* can be as short as 1 second or as long as 100 years (or longer). We recommend somewhere between 6-months to a year.
+* **Signed Checkpoint**: A critical or special section after a series of metadata sections that secures all transactions up to the checkpoint signature. All SigNotes end with a signed checkpoint section.
 
 ### The Lifecycle of a SigNote
 
