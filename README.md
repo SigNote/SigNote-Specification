@@ -219,10 +219,10 @@ A signed checkpoint is designated inside of the file as a section with the regis
 |(UINT8=0xFF)||   (UINT8)   ||   (UINT16)   |
 +------------++-------------++--------------+
 ------------ 16-bytes / 128 bits ------------
-+------------------++-----------------------+
-| TAI64N Timestamp ||     Random Nonce      |
-|    (12 bytes)    ||       (UINT32)        |
-+------------------++-----------------------+
++---------------------------++--------------+
+|         Timestamp         || Random Nonce |
+|    (TAI64N, 12 bytes)     ||   (UINT32)   |
++---------------------------++--------------+
 ------------ 32-bytes / 256-bits ------------
 +-------------------------------------------+
 |             SIGNER PUBLIC KEY             |
@@ -230,8 +230,8 @@ A signed checkpoint is designated inside of the file as a section with the regis
 +-------------------------------------------+
 ------------ 64-bytes / 512-bits ------------
 +-------------------------------------------+
-|    Signature of file up to this point     |
-|             Ed25519(512-bits)             |
+|  Signature of file up to this Checkpoint  |
+|            Ed25519 (512-bits)             |
 +-------------------------------------------+
 ```
 
@@ -248,15 +248,16 @@ The integrity of each signer in the SigChain is backed by the signature of Inter
                         |                   |                  |       
                 +-------v-------+ +---------v--------+ +-------v------+
 -[INTERMEDIATE]-+ Regional Mint +-+ State Department +-+ Gov Treasury |
-                +------------+--+ +-----------------++ +-------+------+
-                             |                      |          |       
-                +------------v-----------+ +--------v-------+  |       
+                +-------+-------+ +------------+-----+ +-------+------+
+                        |                      |               |       
+                +-------v----------------+ +---v------------+  |       
 -[INTERMEDIATE]-+ Financial Institutions +-+ State Notaries |  |       
-                +-----------+------------+ +---+------------+  |       
-                            |                  |               |       
-                +-----------v----------+ +-----v-----+ +-------v------+
----[END USER]---+      Retailers       +-+ Consumers +-+ Gov Agencies |
-                +----------------------+ +-----------+ +--------------+
+                +----+-------------------+ +-+-+----------+-+  |       
+                     |                       | |          |    |       
+                     |           +-----------+ |          |    |       
+                +----v---+ +-----v-----+ +-----v-----+ +--v----v------+
+---[END USER]---+  ATMs  +-+ Retailers +-+ Consumers +-+ Gov Agencies |
+                +--------+ +-----------+ +-----------+ +--------------+
 ```
 
 Each link in this chain is stored in a SigNote in the form of a *Signature Trust Authorization Section*.
