@@ -211,7 +211,7 @@ SigNotes are append-only logs of transaction data that MUST be signed after each
 
 Unless the following requirements are met, any signed checkpoint data will be discarded:
 
-* All checkpoint public keys must be linked to a valid chain of the SigNote's currency trust root. This is accomplished via file sections with type `0x01` hexadecimal.
+* All checkpoint public keys must be linked to a valid chain of the SigNote's currency trust root. This is accomplished via file sections with type `0x10` hexadecimal.
 * The timestamp must be more recent than any other timestamp within the SigNote.
 * The timestamp must be within the Spent at Time (ST) Limit of the SigNote.
 * The timestamp must be a time earlier than current time of the verification engine.
@@ -287,7 +287,7 @@ Each *Signature Trust Authorization Section* is represented by the following dat
 ------------- 4-bytes / 32 bits -------------  | |          |____1000 Can sign 0x0 Sections  
 +------------++-------------++--------------+  | | +--------+____0100 Can sign 0x1 Sections  
 |SECTION TYPE||SECTION FLAGS||SECTION LENGTH|  | | |        |____0010 Can sign 0x2 Sections  
-|(UINT8=0x01)||   (UINT8)   ||   (UINT16)   |  | | |        |____0001 Can sign 0x3 Sections  
+|(UINT8=0x10)||   (UINT8)   ||   (UINT16)   |  | | |        |____0001 Can sign 0x3 Sections  
 +------------++-------------++--------------+  v v v                                         
 ------------ 24-bytes / 192 bits ------------ /00000000     |10000000 Can sign 0x4 Sections  
 +--------------++--------------++-----------+/ v------------+01000000 Can sign 0x5 Sections  
