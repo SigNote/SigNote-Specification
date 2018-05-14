@@ -29,7 +29,7 @@ Without permission, anyone may use, reproduce or distribute any material in this
             * [SigNote File Version Header](#signote-file-version-header)
             * [SigNote File Sections](#signote-file-sections)
             * [SigNote Signed Checkpoints](#signote-signed-checkpoints)
-            * [SigNote Signature Trust Authorization](#signote-signature-trust-authorization)
+            * [SigNote Trust Authorization Section (TAS)](#signote-trust-authorization-section-tas)
             * [SigNote Section Listing](#signote-section-listing)
          * [Working with SigNotes](#working-with-signotes)
             * [Verifying a SigNote](#verifying-a-signote)
@@ -241,7 +241,7 @@ A signed checkpoint is designated inside of the file as a section with the regis
 +-------------------------------------------+
 ```
 
-#### SigNote Signature Trust Authorization
+#### SigNote Trust Authorization Section (TAS)
 
 SigNotes form a complete chain of trust via its SigChain, the chain of digital signatures that extend from a government's central reserve to the financial institutions, retailers and consumers who make use of reserve currency.
 
@@ -266,9 +266,9 @@ The integrity of each signer in the SigChain is backed by the signature of Inter
                 +--------+ +-----------+ +-----------+ +--------------+
 ```
 
-Each link in this chain is stored in a SigNote in the form of a *Signature Trust Authorization Section*.
+Each link in this chain is stored in a SigNote in the form of a *Signature Trust Authorization Section (TAS)*.
 
-Each *Signature Trust Authorization Section* is represented by the following data structure:
+Each *Signature Trust Authorization Section (TAS)* is represented by the following data structure:
 
 
 ```
