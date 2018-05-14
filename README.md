@@ -26,6 +26,7 @@ Without permission, anyone may use, reproduce or distribute any material in this
             * [SigNote File Version Header](#signote-file-version-header)
             * [SigNote File Sections](#signote-file-sections)
             * [SigNote Signed Checkpoints](#signote-signed-checkpoints)
+            * [SigNote Signature Trust Authorization](#signote-signature-trust-authorization)
             * [SigNote Section Listing](#signote-section-listing)
          * [Working with SigNotes](#working-with-signotes)
             * [Verifying a SigNote](#verifying-a-signote)
