@@ -234,6 +234,32 @@ A signed checkpoint is designated inside of the file as a section with the regis
 +-------------------------------------------+
 ```
 
+#### SigNote Signature Trust Authorization
+
+SigNotes form a complete chain of trust via its SigChain, the chain of digital signatures that extend from a government's central reserve to the financial institutions, retailers and consumers who make use of reserve currency.
+
+The integrity of each signer in the SigChain is backed by the signature of Intermediate entities (Regional Mints, State Department, Treasury, Notaries) who extend the trust of government's central reserve.
+
+```
+                +-----------------------------------------------------+  
+-----[ROOT]-----+             Government Central Reserve              +--
+                +-------+-------------------+------------------+------+  
+                        |                   |                  |         
+                +-------v-------+ +---------v--------+ +-------v------+  
+-[INTERMEDIATE]-+ Regional Mint +-+ State Department +-+ Gov Treasury +--
+                +------------+--+ +----------------+-+ +-------+------+  
+                             |                     |           |         
+                +------------v-----------+ +-------v------+    |         
+-[INTERMEDIATE]-+ Financial Institutions +-+State Notaries+--  |         
+                +-----------+------------+ +---+----------+    |         
+                            |                  |               |         
+                +-----------v----------+ +-----v-----+ +-------v------+  
+---[END USER]---+      Retailers       +-+ Consumers +-+ Gov Agencies +--
+                +----------------------+ +-----------+ +--------------+  
+```
+
+Each link in this chain is stored in a SigNote in the form of a *Signature Trust Authorization Section*.
+
 #### SigNote Section Listing
 
 This area is reserved for information about each SigNote Section Type.
