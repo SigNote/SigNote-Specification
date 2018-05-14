@@ -324,7 +324,7 @@ This area is reserved for information about each SigNote Section Type.
 * `0x0` **Document Root Control Sections**
     * `0x00` **Initialization**
 * `0x1` **Trust Control Sections**
-    * `0x10` **Signature Trust Authorization** <br /> *Connects a public key to a currency's trust root.*
+    * `0x10` **Trust Authorization Section (TAS)** <br /> *Connects a public key to a currency's trust root.*
 * `0x2` **Transaction Control Section**
     * `0x20` **Offer** <br /> *Offer SigNote to a known public key*
     * `0x21` **Accept** <br /> *Accept SigNote under new public key (must match most recent offer section.*
