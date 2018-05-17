@@ -29,8 +29,9 @@ Without permission, anyone may use, reproduce or distribute any material in this
             * [SigNote File Version Header](#signote-file-version-header)
             * [SigNote File Sections](#signote-file-sections)
          * [SigNote File Section Specifics](#signote-file-section-specifics)
-            * [SigNote Signed Checkpoints](#signote-signed-checkpoints)
-            * [Trust Authorization Section (TAS)](#trust-authorization-section-tas)
+            * [0x10 <g-emoji class="g-emoji" alias="triangular_flag_on_post" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f6a9.png">🚩</g-emoji><g-emoji class="g-emoji" alias="key" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f511.png">🔑</g-emoji> Trust Authorization Section (TAS)](#0x10--trust-authorization-section-tas)
+               * [Requirements](#requirements)
+            * [0xFF <g-emoji class="g-emoji" alias="triangular_flag_on_post" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f6a9.png">🚩</g-emoji> SigNote Signed Checkpoints](#0xff--signote-signed-checkpoints)
          * [Working with SigNotes](#working-with-signotes)
             * [Verifying a SigNote](#verifying-a-signote)
             * [Transferring a SigNote](#transferring-a-signote)
@@ -250,45 +251,7 @@ Each section is represented by the following data structure:
     * `0xFE` 🚩🔑 **VOID Fuse** *Used to void a SigNote before its Spent at Time (ST) Limit.* <br /> *Next immediate checkpoint must be signed by an agent of a government's central reserve.*
     * `0xFF` 🚩 **Signed Checkpoint Section**
 
-
-
-#### SigNote Signed Checkpoints
-
-SigNotes are append-only logs of transaction data that MUST be signed after each transaction.
-
-Unless the following requirements are met, any signed checkpoint data will be discarded:
-
-* All checkpoint public keys must be linked to a valid chain of the SigNote's currency trust root. This is accomplished via file sections with type `0x10` hexadecimal.
-* The timestamp must be more recent than any other timestamp within the SigNote.
-* The timestamp must be within the Spent at Time (ST) Limit of the SigNote.
-* The timestamp must be a time earlier than current time of the verification engine.
-
-A signed checkpoint is designated inside of the file as a section with the registered type `0xFF` hexadecimal and has the following data structure:
-
-```
-------------- 4-bytes / 32 bits -------------
-+------------++-------------++--------------+
-|SECTION TYPE||SECTION FLAGS||SECTION LENGTH|
-|(UINT8=0xFF)||   (UINT8)   ||   (UINT16)   |
-+------------++-------------++--------------+
------------- 16-bytes / 128 bits ------------
-+---------------------------++--------------+
-|         Timestamp         || Random Nonce |
-|    (TAI64N, 12 bytes)     ||   (UINT32)   |
-+---------------------------++--------------+
------------- 32-bytes / 256-bits ------------
-+-------------------------------------------+
-|             SIGNER PUBLIC KEY             |
-|             Ed25519(256-bits)             |
-+-------------------------------------------+
------------- 64-bytes / 512-bits ------------
-+-------------------------------------------+
-|  Signature of file up to this Checkpoint  |
-|            Ed25519 (512-bits)             |
-+-------------------------------------------+
-```
-
-#### Trust Authorization Section (TAS)
+#### `0x10` 🚩🔑 Trust Authorization Section (TAS)
 
 SigNotes form a complete chain of trust via its SigChain, the chain of digital signatures that extend from a government's central reserve to the financial institutions, retailers and consumers who make use of reserve currency.
 
@@ -362,6 +325,42 @@ Each *Trust Authorization Section (TAS)* is represented by the following data st
                                                             |00000100 Can sign 0xFC Section  
                                                             |00000010 Can sign 0xFD Section  
                                                             |00000001 Can sign 0xFE Section  
+```
+
+#### `0xFF` 🚩 SigNote Signed Checkpoints
+
+SigNotes are append-only logs of transaction data that MUST be signed after each transaction.
+
+Unless the following requirements are met, any signed checkpoint data will be discarded:
+
+* All checkpoint public keys must be linked to a valid chain of the SigNote's currency trust root. This is accomplished via file sections with type `0x10` hexadecimal.
+* The timestamp must be more recent than any other timestamp within the SigNote.
+* The timestamp must be within the Spent at Time (ST) Limit of the SigNote.
+* The timestamp must be a time earlier than current time of the verification engine.
+
+A signed checkpoint is designated inside of the file as a section with the registered type `0xFF` hexadecimal and has the following data structure:
+
+```
+------------- 4-bytes / 32 bits -------------
++------------++-------------++--------------+
+|SECTION TYPE||SECTION FLAGS||SECTION LENGTH|
+|(UINT8=0xFF)||   (UINT8)   ||   (UINT16)   |
++------------++-------------++--------------+
+------------ 16-bytes / 128 bits ------------
++---------------------------++--------------+
+|         Timestamp         || Random Nonce |
+|    (TAI64N, 12 bytes)     ||   (UINT32)   |
++---------------------------++--------------+
+------------ 32-bytes / 256-bits ------------
++-------------------------------------------+
+|             SIGNER PUBLIC KEY             |
+|             Ed25519(256-bits)             |
++-------------------------------------------+
+------------ 64-bytes / 512-bits ------------
++-------------------------------------------+
+|  Signature of file up to this Checkpoint  |
+|            Ed25519 (512-bits)             |
++-------------------------------------------+
 ```
 
 
