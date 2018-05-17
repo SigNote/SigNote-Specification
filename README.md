@@ -29,9 +29,12 @@ Without permission, anyone may use, reproduce or distribute any material in this
             * [SigNote File Version Header](#signote-file-version-header)
             * [SigNote File Sections](#signote-file-sections)
          * [SigNote File Section Specifics](#signote-file-section-specifics)
-            * [0x10 <g-emoji class="g-emoji" alias="triangular_flag_on_post" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f6a9.png">🚩</g-emoji><g-emoji class="g-emoji" alias="key" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f511.png">🔑</g-emoji> Trust Authorization Section (TAS)](#0x10--trust-authorization-section-tas)
-               * [Requirements](#requirements)
-            * [0xFF <g-emoji class="g-emoji" alias="triangular_flag_on_post" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f6a9.png">🚩</g-emoji> SigNote Signed Checkpoints](#0xff--signote-signed-checkpoints)
+            * [0x0 <g-emoji class="g-emoji" alias="triangular_flag_on_post" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f6a9.png">🚩</g-emoji><g-emoji class="g-emoji" alias="key" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f511.png">🔑</g-emoji> Document Root Control Sections](#0x0--document-root-control-sections)
+               * [0x00 SigNote Initialization](#0x00-signote-initialization)
+            * [0x1 <g-emoji class="g-emoji" alias="triangular_flag_on_post" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f6a9.png">🚩</g-emoji><g-emoji class="g-emoji" alias="key" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f511.png">🔑</g-emoji> Trust Control Sections](#0x1--trust-control-sections)
+               * [0x10 Trust Authorization Section (TAS)](#0x10-trust-authorization-section-tas)
+            * [0xF Special Consideration Sections](#0xf-special-consideration-sections)
+               * [0xFF <g-emoji class="g-emoji" alias="triangular_flag_on_post" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f6a9.png">🚩</g-emoji> SigNote Signed Checkpoints](#0xff--signote-signed-checkpoints)
          * [Working with SigNotes](#working-with-signotes)
             * [Verifying a SigNote](#verifying-a-signote)
             * [Transferring a SigNote](#transferring-a-signote)
@@ -216,7 +219,7 @@ Each section is represented by the following data structure:
 **Table of Contents**
 
 * `0x0` 🚩🔑 **Document Root Control Sections**
-    * `0x00` **Initialization** <br /> *Initializes the SigNote*
+    * `0x00` **SigNote Initialization** <br /> *Initializes the SigNote*
 * `0x1` 🚩🔑 **Trust Control Sections**
     * `0x10` **Trust Authorization Section (TAS)** <br /> *Connects a public key to a currency's trust root.*
 * `0x2` 🚩🔑 **Transaction Control Section**
@@ -251,7 +254,11 @@ Each section is represented by the following data structure:
     * `0xFE` 🚩🔑 **VOID Fuse** *Used to void a SigNote before its Spent at Time (ST) Limit.* <br /> *Next immediate checkpoint must be signed by an agent of a government's central reserve.*
     * `0xFF` 🚩 **Signed Checkpoint Section**
 
-#### `0x10` 🚩🔑 Trust Authorization Section (TAS)
+#### `0x0` 🚩🔑 Document Root Control Sections
+##### `0x00` SigNote Initialization
+
+#### `0x1` 🚩🔑 Trust Control Sections
+##### `0x10` Trust Authorization Section (TAS)
 
 SigNotes form a complete chain of trust via its SigChain, the chain of digital signatures that extend from a government's central reserve to the financial institutions, retailers and consumers who make use of reserve currency.
 
@@ -327,7 +334,12 @@ Each *Trust Authorization Section (TAS)* is represented by the following data st
                                                             |00000001 Can sign 0xFE Section  
 ```
 
-#### `0xFF` 🚩 SigNote Signed Checkpoints
+##### Requirements
+* The *Not Valid After* timestamp must be greater than the creation date of the SigNote
+* The *Not Valid After* timestamp must be greater than the Spent at Time (ST) of the SigNote
+
+#### `0xF` Special Consideration Sections
+##### `0xFF` 🚩 SigNote Signed Checkpoints
 
 SigNotes are append-only logs of transaction data that MUST be signed after each transaction.
 
