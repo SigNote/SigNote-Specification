@@ -230,8 +230,8 @@ Each section is represented by the following data structure:
 * `0xA` 🔑 **Reserved**
 * `0xB` 🔑 **Reserved**
 * `0xC` 🔑 **Reserved**
-* `0xD` 🔑 **Reserved**
-* `0xE` 🔑 **Reserved**
+* `0xD` **Reserved**
+* `0xE` **Reserved**
 * `0xF` **Special Consideration Sections**
     * `0xF0` 🔑 *Reserved*
     * `0xF1` 🔑 *Reserved*
