@@ -28,9 +28,9 @@ Without permission, anyone may use, reproduce or distribute any material in this
          * [The SigNote File Format](#the-signote-file-format)
             * [SigNote File Version Header](#signote-file-version-header)
             * [SigNote File Sections](#signote-file-sections)
+         * [SigNote File Section Specifics](#signote-file-section-specifics)
             * [SigNote Signed Checkpoints](#signote-signed-checkpoints)
-            * [SigNote Trust Authorization Section (TAS)](#signote-trust-authorization-section-tas)
-            * [SigNote Section Listing](#signote-section-listing)
+            * [Trust Authorization Section (TAS)](#trust-authorization-section-tas)
          * [Working with SigNotes](#working-with-signotes)
             * [Verifying a SigNote](#verifying-a-signote)
             * [Transferring a SigNote](#transferring-a-signote)
@@ -205,6 +205,53 @@ Each section is represented by the following data structure:
 +-------------------------------------------+
 ```
 
+### SigNote File Section Specifics
+
+**Lengend:**
+
+* 🚩 *Implementation Required* 
+* 🔑 *lockable via Trust Authorization Section* 
+
+**Table of Contents**
+
+* `0x0` 🚩🔑 **Document Root Control Sections**
+    * `0x00` **Initialization** <br /> *Initializes the SigNote*
+* `0x1` 🚩🔑 **Trust Control Sections**
+    * `0x10` **Trust Authorization Section (TAS)** <br /> *Connects a public key to a currency's trust root.*
+* `0x2` 🚩🔑 **Transaction Control Section**
+    * `0x20` **Offer** <br /> *Offer SigNote to a known public key*
+    * `0x21` **Accept** <br /> *Accept SigNote under new public key (must match most recent offer section.*
+* `0x3` 🔑 **Reserved**
+* `0x4` 🔑 **Reserved**
+* `0x5` 🔑 **Reserved**
+* `0x6` 🔑 **Reserved**
+* `0x7` 🔑 **Reserved**
+* `0x9` 🔑 **Reserved**
+* `0xA` 🔑 **Reserved**
+* `0xB` 🔑 **Reserved**
+* `0xC` 🔑 **Reserved**
+* `0xD` 🔑 **Reserved**
+* `0xE` 🔑 **Reserved**
+* `0xF` **Special Consideration Sections**
+    * `0xF0` 🔑 *Reserved*
+    * `0xF1` 🔑 *Reserved*
+    * `0xF2` 🔑 *Reserved*
+    * `0xF3` 🔑 *Reserved*
+    * `0xF4` 🔑 *Reserved*
+    * `0xF5` 🔑 *Reserved*
+    * `0xF6` 🔑 *Reserved*
+    * `0xF7` 🔑 *Reserved*
+    * `0xF8` 🔑 *Reserved*
+    * `0xF9` 🔑 *Reserved*
+    * `0xFA` 🔑 *Reserved*
+    * `0xFB` 🔑 *Reserved*
+    * `0xFC` 🔑 *Reserved*
+    * `0xFD` 🔑 *Reserved*
+    * `0xFE` 🚩🔑 **VOID Fuse** *Used to void a SigNote before its Spent at Time (ST) Limit.* <br /> *Next immediate checkpoint must be signed by an agent of a government's central reserve.*
+    * `0xFF` 🚩 **Signed Checkpoint Section**
+
+
+
 #### SigNote Signed Checkpoints
 
 SigNotes are append-only logs of transaction data that MUST be signed after each transaction.
@@ -241,7 +288,7 @@ A signed checkpoint is designated inside of the file as a section with the regis
 +-------------------------------------------+
 ```
 
-#### SigNote Trust Authorization Section (TAS)
+#### Trust Authorization Section (TAS)
 
 SigNotes form a complete chain of trust via its SigChain, the chain of digital signatures that extend from a government's central reserve to the financial institutions, retailers and consumers who make use of reserve currency.
 
@@ -266,9 +313,9 @@ The integrity of each signer in the SigChain is backed by the signature of Inter
                 +--------+ +-----------+ +-----------+ +--------------+
 ```
 
-Each link in this chain is stored in a SigNote in the form of a *Signature Trust Authorization Section (TAS)*.
+Each link in this chain is stored in a SigNote in the form of a *Trust Authorization Section (TAS)*.
 
-Each *Signature Trust Authorization Section (TAS)* is represented by the following data structure:
+Each *Trust Authorization Section (TAS)* is represented by the following data structure:
 
 
 ```
@@ -317,45 +364,6 @@ Each *Signature Trust Authorization Section (TAS)* is represented by the followi
                                                             |00000001 Can sign 0xFE Section  
 ```
 
-#### SigNote Section Listing
-
-This area is reserved for information about each SigNote Section Type.
-
-* `0x0` **Document Root Control Sections**
-    * `0x00` **Initialization**
-* `0x1` **Trust Control Sections**
-    * `0x10` **Trust Authorization Section (TAS)** <br /> *Connects a public key to a currency's trust root.*
-* `0x2` **Transaction Control Section**
-    * `0x20` **Offer** <br /> *Offer SigNote to a known public key*
-    * `0x21` **Accept** <br /> *Accept SigNote under new public key (must match most recent offer section.*
-* `0x3` **Reserved**
-* `0x4` **Reserved**
-* `0x5` **Reserved**
-* `0x6` **Reserved**
-* `0x7` **Reserved**
-* `0x9` **Reserved**
-* `0xA` **Reserved**
-* `0xB` **Reserved**
-* `0xC` **Reserved**
-* `0xD` **Reserved**
-* `0xE` **Reserved**
-* `0xF` **Special Consideration Sections**
-    * `0xF0` *Reserved*
-    * `0xF1` *Reserved*
-    * `0xF2` *Reserved*
-    * `0xF3` *Reserved*
-    * `0xF4` *Reserved*
-    * `0xF5` *Reserved*
-    * `0xF6` *Reserved*
-    * `0xF7` *Reserved*
-    * `0xF8` *Reserved*
-    * `0xF9` *Reserved*
-    * `0xFA` *Reserved*
-    * `0xFB` *Reserved*
-    * `0xFC` *Reserved*
-    * `0xFD` *Reserved*
-    * `0xFE` **VOID Fuse** *Used to void a SigNote before its Spent at Time (ST) Limit.* <br /> *Next immediate checkpoint must be signed by an agent of a government's central reserve.*
-    * `0xFF` **Signed Checkpoint Section**
 
 ### Working with SigNotes
 
