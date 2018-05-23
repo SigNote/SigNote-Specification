@@ -24,7 +24,8 @@ Without permission, anyone may use, reproduce or distribute any material in this
          * [Transaction Accountability Built-in](#transaction-accountability-built-in)
       * [Technical Specification](#technical-specification)
          * [Definitions](#definitions)
-         * [The Lifecycle of a SigNote](#the-lifecycle-of-a-signote)
+         * [Lifecycle of a SigNote](#lifecycle-of-a-signote)
+         * [Example Timeline of a SigNote](#example-timeline-of-a-signote)
          * [The SigNote File Format](#the-signote-file-format)
             * [SigNote File Version Header](#signote-file-version-header)
             * [SigNote File Sections](#signote-file-sections)
@@ -105,8 +106,13 @@ Just like paper banknotes, no fees are required to settle debts. Unlike paper ba
 * **Spent at Time**: The time at which a SigNote is VOID and cannot transact further. Spent SigNotes may be sent back to an agent of a government's central reserve to redeem a new SigNote for further transaction. *Spent at Time* can be as short as 1 second or as long as 100 years (or longer). We recommend somewhere between 6-months to a year.
 * **Signed Checkpoint**: A critical or special section after a series of metadata sections that secures all transactions up to the checkpoint signature. All SigNotes end with a signed checkpoint section.
 
-### The Lifecycle of a SigNote
+### Lifecycle of a SigNote
 
+![SigNote Example Lifetime](https://github.com/SigNote/SigNote-Specification/raw/master/images/signote_example_lifetime.png)
+
+*See Markdown for RAW ASCII Chart*
+
+<!---
 ```
 +------------------------------------------------------+
 | A SigNote is signed into existence at an authorized  |
@@ -127,7 +133,7 @@ Just like paper banknotes, no fees are required to settle debts. Unlike paper ba
 +---------------------------+--------------------------+
                             |                           
                 +-----------v----------+                
-      +-[SIGN]-->Financial Institutions<--[SIGN]-+      
+      +-[SIGN]-|>Financial Institutions<--[SIGN]-+      
       |         +----------------------+         |      
       |   SigNotes can be transferred between    |      
       |  Financial Institutions, Retailers and   |      
@@ -135,7 +141,7 @@ Just like paper banknotes, no fees are required to settle debts. Unlike paper ba
       |file size grows too large or (ii) the bill|      
 [SIGN]|  reaches its Spent at Time (ST) Limit.   |[SIGN]
 +-----v-----+               |              +-----v-----+
-| Retailers <----[SIGN]-----+----[SIGN]----> Consumers |
+| Retailers <----[SIGN]-----+----[SIGN]---|> Consumers |
 +-----------+               |              +-----------+
                             |                           
 +---------------------------v--------------------------+
@@ -149,6 +155,52 @@ Just like paper banknotes, no fees are required to settle debts. Unlike paper ba
 |            rouge entities in the system.             |
 +------------------------------------------------------+
 ```
+--->
+
+### Example Timeline of a SigNote
+
+![SigNote Example Timeline](https://github.com/SigNote/SigNote-Specification/raw/master/images/signote_example_timeline.png)
+
+*See Markdown for RAW ASCII Chart*
+
+<!---
+
+  +------------------------------------------------------------------------------------------------------------------------+   
+  |Network Enabled Zone                                                                                                    |   
+--+--------------------------------------------------- Arrow of TIME ------------------------------------------------------+->
+  | +--------------------------------------------------------------------------------------+   +------------------+        |   
+  | |                  Central Reserve Master Ledger (Could be Token.io)                   |-> |SigNote now out of|        |   
+  | +-+------------------------------------------------------+-----------------------------+   | circulation. END |        |   
+  |   | START               ^       ^     ^                ^ |                          ^      +------------------+        |   
+  |   v                     |       |     |                | |                          |                                  |   
+  | +--------------+      +-+-------+-----+----------------+-+----------------+         | SigNote sent back for auditing   |   
+  | |SigNote Minted|--+   |   Note is Audited and Recorded on Master Ledger   |     +---+--------------------------+       |   
+  | +--------------+  v   +-+-------+-----+----------------+-+----------------+     | SigNote Signed to Retailer's |       |   
+  |   +---------------------+--+    |     |                | |                      |    Financial Institution     |       |   
+  |   |   SigNote Signed to    |    |     |                | |                      +------------------------------+       |   
+  |   | Financial Institution  |--+ |     |                | | [SigNote deemed OK]      ^                                  |   
+  |   +------------------------+  v |     |                | v                          |                                  |   
+  |              +------------------+-----+----+         +-+----------------------------+-+                                |   
+  +--------------+  SigNote Signed to FI ATM   +---------+            Retailer            +--------------------------------+   
+  |Out-Network   +----------------------+------+         +---+----------------------------+                                |   
+  |Zone                                 |                  ^ |                     ^                                       |   
+  |                                     v                  | Consumer B gets back  |                                       |   
+  |                                +-----------------+     | SigNote with embedded |                                       |   
+  |                                |SigNote Signed to|     | Audit Section Data    |                                       |   
+  |                                |   Consumer A    |-+   | and request for       |                                       |   
+  |                                +-----------------+ |   | signature (payment)   |                                       |   
+  |                            Trust between Consumers |   | |                     |                                       |   
+  |                                    +---------------v-+ | |                     |                                       |   
+  |                                    |SigNote Signed to+-+ |                     |                                       |   
+  |                                    |   Consumer B    |<--+                     |                                       |   
+  |                                    |                 +-------------------------+                                       |   
+  |                                    +-----------------+           Consumer B Signs                                      |   
+  |                                                                  SigNote over to                                       |   
+  |                                                                      Retailer                                          |   
+  |                                                                                                                        |   
+  +------------------------------------------------------------------------------------------------------------------------+   
+
+-->
 
 ### The SigNote File Format
 
